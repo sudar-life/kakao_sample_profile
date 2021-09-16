@@ -1,16 +1,16 @@
 import 'dart:io';
 
 class UserModel {
-  String uid;
-  String docId;
+  String? uid;
+  String? docId;
   String name;
   String discription;
-  String avatarUrl;
-  String backgroundUrl;
-  File avatarFile;
-  File backgroundFile;
-  DateTime lastLoginTime;
-  DateTime createdTime;
+  String? avatarUrl;
+  String? backgroundUrl;
+  File? avatarFile;
+  File? backgroundFile;
+  DateTime? lastLoginTime;
+  DateTime? createdTime;
 
   UserModel({
     this.uid,

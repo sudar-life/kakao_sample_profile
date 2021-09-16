@@ -5,7 +5,7 @@ import 'package:kakao_sample_profile/src/controller/image_crop_controller.dart';
 import 'package:kakao_sample_profile/src/controller/profile_controller.dart';
 
 class Profile extends GetView<ProfileController> {
-  Profile({Key key}) : super(key: key);
+  Profile({Key? key}) : super(key: key);
 
   Widget _header() {
     return Positioned(
@@ -92,7 +92,7 @@ class Profile extends GetView<ProfileController> {
     return controller.myProfile.value.backgroundFile == null
         ? _backgroundImageWidget()
         : Image.file(
-            controller.myProfile.value.backgroundFile,
+            controller.myProfile.value.backgroundFile!,
             fit: BoxFit.cover,
           );
   }
@@ -101,12 +101,12 @@ class Profile extends GetView<ProfileController> {
     return controller.myProfile.value.backgroundUrl == null
         ? Container()
         : Image.network(
-            controller.myProfile.value.backgroundUrl,
+            controller.myProfile.value.backgroundUrl!,
             fit: BoxFit.cover,
           );
   }
 
-  Widget _oneButton(IconData icon, String title, Function ontap) {
+  Widget _oneButton(IconData icon, String title, Function() ontap) {
     return GestureDetector(
       onTap: ontap,
       child: Column(
@@ -161,7 +161,7 @@ class Profile extends GetView<ProfileController> {
     return controller.myProfile.value.avatarFile == null
         ? _profileImageWidget()
         : Image.file(
-            controller.myProfile.value.avatarFile,
+            controller.myProfile.value.avatarFile!,
             fit: BoxFit.cover,
           );
   }
@@ -173,7 +173,7 @@ class Profile extends GetView<ProfileController> {
             fit: BoxFit.cover,
           )
         : Image.network(
-            controller.myProfile.value.avatarUrl,
+            controller.myProfile.value.avatarUrl!,
             fit: BoxFit.cover,
           );
   }
@@ -251,7 +251,7 @@ class Profile extends GetView<ProfileController> {
     );
   }
 
-  Widget _partProfileInfo(String value, Function ontap) {
+  Widget _partProfileInfo(String value, Function() ontap) {
     return GestureDetector(
       onTap: ontap,
       child: Stack(children: [
@@ -342,7 +342,7 @@ class Profile extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body: Container(
         child: Stack(
           children: [

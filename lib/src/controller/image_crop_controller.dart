@@ -9,14 +9,14 @@ import 'package:kakao_sample_profile/src/controller/profile_controller.dart';
 class ImageCropController extends GetxController {
   static ImageCropController get to => Get.find();
 
-  Future<File> selectImage(ProfileImageType type) async {
-    PickedFile pickedFile =
-        await ImagePicker().getImage(source: ImageSource.gallery);
+  Future<File?> selectImage(ProfileImageType type) async {
+    var pickedFile = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 100);
     if (pickedFile == null) return null;
-    return await _cropImage(pickedFile, type);
+    return await _cropImage(pickedFile.path, type);
   }
 
-  Future<File> _cropImage(PickedFile file, ProfileImageType type) async {
+  Future<File?> _cropImage(String? path, ProfileImageType type) async {
     List<CropAspectRatioPreset> presets = [];
     switch (type) {
       case ProfileImageType.THUMBNAIL:
@@ -35,8 +35,8 @@ class ImageCropController extends GetxController {
         ];
         break;
     }
-    File croppedFile = await ImageCropper.cropImage(
-        sourcePath: file.path,
+    var croppedFile = await ImageCropper.cropImage(
+        sourcePath: path!,
         aspectRatioPresets: presets,
         androidUiSettings: AndroidUiSettings(
             toolbarTitle: 'Cropper',

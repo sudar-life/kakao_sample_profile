@@ -8,7 +8,7 @@ class FirebaseUserRepository {
     return drf.id;
   }
 
-  static Future<UserModel> findUserByUid(String uid) async {
+  static Future<UserModel?> findUserByUid(String uid) async {
     CollectionReference users = FirebaseFirestore.instance.collection("users");
     QuerySnapshot data = await users.where("uid", isEqualTo: uid).get();
     if (data.size == 0) {

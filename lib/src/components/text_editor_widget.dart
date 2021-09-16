@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TextEditorWidget extends StatefulWidget {
-  final String text;
-  const TextEditorWidget({Key key, this.text}) : super(key: key);
+  final String? text;
+  const TextEditorWidget({Key? key, this.text}) : super(key: key);
 
   @override
   _TextEditorWidgetState createState() => _TextEditorWidgetState();
 }
 
 class _TextEditorWidgetState extends State<TextEditorWidget> {
-  TextEditingController _textEditingController;
+  late TextEditingController _textEditingController;
 
   @override
   void initState() {
     _textEditingController = TextEditingController();
-    _textEditingController.text = widget.text;
+    _textEditingController.text = widget.text!;
     super.initState();
   }
 
